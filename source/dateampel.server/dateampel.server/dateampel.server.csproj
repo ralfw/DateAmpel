@@ -63,6 +63,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ampel_dashboard.html" />
     <Content Include="ampel_eckdaten_erfassen.html" />
     <Content Include="ampel_quittung.html" />
     <Content Include="Web.config" />

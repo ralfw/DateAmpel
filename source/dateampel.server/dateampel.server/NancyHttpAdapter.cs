@@ -22,19 +22,13 @@ namespace dateampel.server
                 return View["ampel_quittung", viewModel];
             };
 
-            Get["/ampel/{partnerId}"] = _ =>
+            Get["/ampel/{PartnerId}"] = _ =>
             {
                 var viewModel = new
                 {
-                    AmpelId = "???"
-                };
-                return View["ampel_dashboard", viewModel];
-            };
-            Post["/date_bewerten"] = _ =>
-            {
-                var viewModel = new
-                {
-                    AmpelId = Request.Form.AmpelId
+                    AmpelId = _.PartnerId,
+                    InitiatorName = "Ralf",
+                    DateName = "Antje"
                 };
                 return View["ampel_dashboard", viewModel];
             };
