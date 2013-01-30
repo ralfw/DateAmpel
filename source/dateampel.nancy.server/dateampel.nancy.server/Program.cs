@@ -12,7 +12,7 @@ namespace dateampel.nancy.server
     {
         private static void Main(string[] args)
         {
-            var host = new NancyHost(new Uri("http://localhost:8000"));
+            var host = new NancyHost(new Uri("http://localhost:8000"), new Uri("http://dateampel.apphb.com"));
             host.Start(); // start hosting
 
             Console.Write("Nancy running... Press any key to exit");
@@ -25,7 +25,7 @@ namespace dateampel.nancy.server
     {
         public HttpPortal()
         {
-            Get["/"] = _ => "Hello, World! " + DateTime.Now;
+            Get["/"] = _ => "AppHarbor: Hello, World! " + DateTime.Now;
         }
     }
 }
