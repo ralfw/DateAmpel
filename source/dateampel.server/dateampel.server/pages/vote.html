@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    </head>
+<body>
+    <h1>Vote für die Date Ampel @Model.AmpelCode</h1>
+    Hallo, @Model.Name! (@Model.Email)<p/>
+    Klicke das Ampellicht an, dass deiner Stimmung zum Date am besten entspricht?
+    <table>
+        <tr>
+            <td>
+                <form method="POST" action="voted">
+                    <input hidden="true" name="Email" value="@Model.Email"/>
+                    <input hidden="true" name="AmpelCode" value="@Model.AmpelCode"/>
+                    <input type="image" src="/images/gruen.png" name="Vote" value="gruen"/>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form method="POST" action="voted">
+                    <input hidden="true" name="Email" value="@Model.Email"/>
+                    <input hidden="true" name="AmpelCode" value="@Model.AmpelCode"/>
+                    <input type="image" src="/images/gelb.png" name="Vote" value="gelb"/>
+                </form>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <form method="POST" action="voted">
+                    <input hidden="true" name="Email" value="@Model.Email"/>
+                    <input hidden="true" name="AmpelCode" value="@Model.AmpelCode"/>
+                    <input type="image" src="/images/rot.png" name="Vote" value="rot"/>
+                </form>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    </head>
+<body>
+    <h1>Date Ampel @Model.AmpelCode</h1>
+
+    <table>
+        <tr>
+            <td>
+                Vote von @Model.NameOwner<br/>
+                <img src="/images/@Model.VoteOwner"/>
+            </td>
+            <td>
+                Vote von @Model.NameDate<br/>
+                <img src="/images/@Model.VoteDate"/>
+            </td>        
+        </tr>
+    </table>
+    
+    <input type="button" onclick="window.location.href='/result/@Model.AmpelCode';" value="Aktualisieren">
+</body>
+</html>

@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Web;
 using Nancy;
+using Nancy.Conventions;
 
 namespace dateampel.server
 {
@@ -10,28 +13,57 @@ namespace dateampel.server
     {
         public NancyHttpAdapter()
         {
-            Get["/"] = _ => View["ampel_eckdaten_erfassen"];
-            Post["/ampel_anlegen"] = _ =>
+            Get["/"] = _ => View[@"pages/home"];
+
+            Post["/vote"] = _ =>
             {
-                var viewModel = new
+                var outputModel = new
                 {
-                    Titel = Request.Form.DateName + " trifft " + Request.Form.InitiatorName,
-                    InitiatorEmail = Request.Form.InitiatorEmail,
-                    DateEmail = Request.Form.DateEmail
+                    AmpelCode = "1234",
+                    Request.Form.Name,
+                    Request.Form.Email
                 };
-                return View["ampel_quittung", viewModel];
+                return View[@"pages/vote", outputModel];
             };
 
-            Get["/ampel/{PartnerId}"] = _ =>
+            Post["/voted"] = _ =>
             {
-                var viewModel = new
+                var outputModel = new
                 {
-                    AmpelId = _.PartnerId,
-                    InitiatorName = "Ralf",
-                    DateName = "Antje"
+                    Request.Form.AmpelCode,
+
+                    NameOwner = "Ralf",
+                    VoteOwner = Request.Form.Vote + ".png",
+
+                    NameDate = "Antje",
+                    VoteDate = "grau.png"
                 };
-                return View["ampel_dashboard", viewModel];
+                return View[@"pages/result", outputModel];
             };
+
+            Get["/result/{AmpelCode}"] = _ =>
+            {
+                var outputModel = new
+                {
+                    _.AmpelCode,
+
+                    NameOwner = "Ralf",
+                    VoteOwner = "gelb.png",
+
+                    NameDate = "Antje",
+                    VoteDate = "rot.png"
+                };
+                return View[@"pages/result", outputModel];
+            };
+        }
+    }
+
+    public class ApplicationBootstrapper : DefaultNancyBootstrapper
+    {
+        protected override void ConfigureConventions(NancyConventions nancyConventions)
+        {
+            nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("images", @"images"));
+            base.ConfigureConventions(nancyConventions);
         }
     }
 }

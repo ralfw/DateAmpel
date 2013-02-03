@@ -63,9 +63,13 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ampel_dashboard.html" />
-    <Content Include="ampel_eckdaten_erfassen.html" />
-    <Content Include="ampel_quittung.html" />
+    <Content Include="images\gelb.png" />
+    <Content Include="images\grau.png" />
+    <Content Include="images\gruen.png" />
+    <Content Include="images\rot.png" />
+    <Content Include="pages\home.html" />
+    <Content Include="pages\result.html" />
+    <Content Include="pages\vote.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -81,6 +85,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -94,7 +99,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>3237</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:23044/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
